@@ -38,20 +38,19 @@ def save_file(output_path):
     :param output_path: 输出目录
     :return:
     """
-    # 遍历删除文件夹
-    shutil.rmtree(output_path)
+    try:
+        # 遍历删除文件夹
+        shutil.rmtree(output_path)
+    except FileNotFoundError:
+        print("当前文件夹不存在")
     os.mkdir(output_path)
     for file in file_path_list:
-        print(file.split(".")[-2])
-        print(file.split(".")[-1])
-        file_path = "{}/{}.{}".format(output_path, file.split(".")[-2], file.split(".")[-1])
-        # print(file_path)
-        # shutil.copyfile(file, file_path)
+        file_path = "{}/{}".format(output_path, file.replace("\\", "/").split("/")[-1])
+        print(file_path)
+        shutil.copyfile(file, file_path)
 
 
 if __name__ == '__main__':
     file_path_list = list()
-    # shutil.copy("./venv/pyvenv.cfg", "./test")
-    directory_traversal("./", ["py"])
-    # print()
-    save_file("./test")
+    directory_traversal("D:/网站模板/", ["zip", 'rar'])
+    save_file("D:/网站模板-解压缩")
