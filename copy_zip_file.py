@@ -6,6 +6,11 @@
 # @File    : copy_zip_file.py
 # @Software: PyCharm
 
+"""
+copy_zip_file.py
+-------------------
+本程序主要用于将复制指定拓展名的文件，从指定位置复制到另外一个位置
+"""
 
 import os
 import shutil
